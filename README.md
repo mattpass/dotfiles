@@ -3,10 +3,12 @@ dotfiles
 
 Useful dotfiles for your Linux env
 
-Install by pulling the files into your ~ home dir:
+Please make a copy of your existing dotfiles as this may overwrite them
 
-https://raw.githubusercontent.com/mattpass/dotfiles/master/.bashrc
+Install by running this command to pull the files into your ~ home dir:
 
-and
+```
+wget https://raw.githubusercontent.com/mattpass/dotfiles/master/.bashrc && wget https://raw.githubusercontent.com/mattpass/dotfiles/master/.nanorc && ls -a
+```
 
-https://raw.githubusercontent.com/mattpass/dotfiles/master/.nanorc
+Once the files are in place, simply restart your CLI
