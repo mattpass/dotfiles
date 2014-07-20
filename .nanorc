@@ -1,0 +1,58 @@
+# CAN LOOK TO USE THIS: include /root/.nano/syntax/ALL.nanorc
+
+set mouse
+set smooth
+set const
+set nonewlines
+set smarthome
+set autoindent
+
+# config file highlighting
+syntax "ALL" "^.*$"
+
+# default text
+color white "^.*$"
+
+# variables
+color red "\$(\S+)\s?"
+
+# special values
+icolor brightcyan "(^|\s|=)(default|true|false|on|off|yes|no)(\s|$)"
+
+# keys
+icolor cyan "^\s*(set\s+)?[A-Z0-9_\/\.\%\@+-]+\s*([:]|\>)"
+
+# commands
+color blue "^\s*set\s+\<"
+
+# numbers
+color red "(^|\s|[[/:|<>(){}=,]|\])[-+]?[0-9](\.?[0-9])*%?($|\>)"
+
+# keys
+icolor cyan "^\s*(\$if )?([A-Z0-9_\/\.\%\@+-]|\s)+="
+
+# punctuation
+color red "[.]"
+color brightwhite "/"
+color brightwhite "(\]|[()<>[{},;:=])"
+color brightwhite "(^|\[|\{|\:)\s*-(\s|$)"
+
+# section headings
+icolor brightyellow "^\s*(\[([A-Z0-9_\.-]|\s)+\])+\s*$"
+color brightcyan "^\s*((Sub)?Section\s*(=|\>)|End(Sub)?Section\s*$)"
+color brightcyan "^\s*\$(end)?if(\s|$)"
+
+# URLs
+icolor green "\b(([A-Z]+://|www[.])[A-Z0-9/:#?&$=_\.\-]+)(\b|$| )"
+
+# XML-like tags
+icolor brightcyan "</?\w+((\s*\w+\s*=)?\s*("[^"]*"|'[^']*'|!?[A-Z0-9_:/]))*(\s*/)?>"
+
+# strings
+color yellow "\"(\\.|[^"])*\"" "'(\\.|[^'])*'"
+
+# comments
+color white "#.*$"
+color cyan "^\s*##.*$"
+color white "^;.*$"
+color white start="<!--" end="-->"
