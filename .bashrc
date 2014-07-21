@@ -46,10 +46,21 @@ function userslistall() {
 
 # Create a new dir and enter it
 function mkd() {
-        mkdir -p "$@" && cd "$@";
+        mkdir -p "$@" && cd "$@"
+}
+
+# Sudo nano a file
+function edit() {
+        sudo nano "$@"
 }
 
 # Remove a dir and everything inside
 function killdir() {
         sudo rm -rf "$@"
+}
+
+# Zip this dir recursively
+function zipthis() {
+        thisdir=${PWD##*/}
+        zip -r $thisdir.zip .
 }
