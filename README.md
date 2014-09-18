@@ -12,3 +12,5 @@ wget https://raw.githubusercontent.com/mattpass/dotfiles/master/.bashrc && wget 
 ```
 
 Once the files are in place, simply restart your CLI
+
+Have fun and let me know of any tweaks
