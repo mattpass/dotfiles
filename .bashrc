@@ -62,5 +62,11 @@ function killdir() {
 # Zip this dir recursively
 function zipthis() {
         thisdir=${PWD##*/}
-        zip -r $thisdir.zip .
+        sudo zip -r $thisdir.zip .
+}
+
+# Get a file following to end point, from sites such as mailbigfile.com
+# argument must be within double quotes when called
+function getzip() {
+        curl -o file.zip -L "$@"
 }
