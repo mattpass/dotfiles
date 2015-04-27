@@ -13,7 +13,7 @@ export PS2="\n\e[0;33m[>] \e\m"
 
 # Show all files
 function l() {
-        ls -a
+        ls -a -l --block-size=\'1 --color=auto
 }
 
 # Change dir and l
@@ -27,6 +27,10 @@ alias ...="c ../.."
 alias ....="c ../../.."
 alias ~="c ~"
 alias http="c /srv/http"
+alias tree="tree -C"
+
+# Save us from killing root
+alias rm="rm --preserve-root"
 
 # Reload the shell (i.e. invoke as a login shell with .bash_profile, which likely this file)
 # switch -l to -i if you just want to reload this file
@@ -35,6 +39,18 @@ alias rebash="exec $SHELL -l"
 # Nano this file or .nanorc
 alias profile="sudo nano ~/.bashrc"
 alias nanorc="sudo nano ~/.nanorc"
+
+# Display memory info totals
+alias meminfo="free -m -l -t"
+
+# Reload Nginx or PHP FPM
+alias nginxt="sudo nginx -t"
+alias nginxr="sudo service nginx reload"
+alias phpr="sudo service php-fpm restart"
+
+# Go to nginx or php-fpm dirs
+alias gonginx="c /etc/nginx/conf.d/"
+alias gophp="c /etc/php-fpm.d/"
 
 # List of users
 alias userslist='cat /etc/passwd |grep "/bin/bash" |grep "[5-9][0-9][0-9]" |cut -d: -f1'
@@ -69,4 +85,9 @@ function zipthis() {
 # argument must be within double quotes when called
 function getzip() {
         curl -o file.zip -L "$@"
+}
+
+# List the sub dir sizes in human readable format as a summary
+function dirsizes() {
+        sudo du -h -s *
 }
