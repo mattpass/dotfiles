@@ -27,7 +27,7 @@ alias ...="c ../.."
 alias ....="c ../../.."
 alias ~="c ~"
 alias http="c /srv/http"
-alias tree="tree -C"
+alias tree="tree -a -C"
 
 # Save us from killing root
 alias rm="rm --preserve-root"
