@@ -36,8 +36,9 @@ alias rm="rm --preserve-root"
 # switch -l to -i if you just want to reload this file
 alias rebash="exec $SHELL -l"
 
-# Nano this file or .nanorc
+# Nano this file, .inputrc or .nanorc
 alias profile="sudo nano ~/.bashrc"
+alias input="sudo nano ~/.inputrc"
 alias nanorc="sudo nano ~/.nanorc"
 
 # Display memory info totals
