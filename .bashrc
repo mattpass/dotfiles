@@ -1,5 +1,11 @@
 # .bashrc
 
+printf '===========================\nTop 5 CPU processes (col 3)\n===========================\n'
+ps aux | sort -rk 3,3 | head -n 6
+
+printf '\n==============================\nTop 5 memory processes (col 4)\n==============================\n'
+ps aux | sort -rk 4,4 | head -n 6
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
