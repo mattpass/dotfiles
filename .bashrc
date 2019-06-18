@@ -65,8 +65,10 @@ function gitbehind() {
 }
 
 # Custom prompts 1 & 2
-export PS1="\n\e[0;32m[\u@\h]\$\n\w \e[m"
-export PS2="\n\e[0;33m[>] \e\m"
+export PS1="\n\e[30;42m \u \e[30;43m \w\$(parsegitbranch) \$(gitbehind)\e[0;32m\n└─▶ "
+export PS2="\n\e[0;32m[\u@\h]\$\n\w \e[m"
+# Use debug to reset color back to white before output display
+trap 'echo -n "$(tput sgr0)"' DEBUG
 
 # Show all files
 function l() {
