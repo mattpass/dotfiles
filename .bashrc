@@ -27,7 +27,7 @@ function gitdirty() {
             if [[ $GITSTATUS != "nothing to commit, working tree clean" ]]; then
                 local GITBRANCH="$(git branch | grep \* | cut -d ' ' -f2)"
                 local GITSTAT="$(git show --stat | awk 'END{print}')"
-                OUTPUT="$OUTPUT\e[30;32m$DIR\e[0m\t : \e[30;34m$GITBRANCH\e[0m\t :\e[30;33m$GITSTAT\e[0m\n"
+                OUTPUT="$OUTPUT\033[30;32m$DIR\033[0m\t : \033[30;34m$GITBRANCH\033[0m\t :\033[30;33m$GITSTAT\033[0m\n"
             fi
         fi
     done
@@ -44,7 +44,7 @@ function parsegitdirty {
 function parsegitbranch {
     local GITBRANCH="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parsegitdirty)/")"
     if [[ $GITBRANCH != "" ]]; then
-        echo -e " \e[0;44m ($GITBRANCH)"
+        echo -e " \033[0;44m ($GITBRANCH)"
     fi
 }
 
@@ -58,15 +58,15 @@ function gitbehind() {
                 if [ "$HEADHASH" != "$UPSTREAMHASH" ]; then
                         local NUMFILESCHANGED="$(git diff $GITBRANCHNAME origin/$GITBRANCHNAME --name-only | wc -l)"
                         if [ "$NUMFILESCHANGED" != "0" ]; then
-                                echo -e "\e[0;41m $NUMFILESCHANGED files behind origin \e[0;32m"
+                                echo -e "\033[0;41m $NUMFILESCHANGED files behind origin \033[0;32m"
                         fi
                 fi
         fi
 }
 
 # Custom prompts 1 & 2
-export PS1="\n\e[30;42m \u \e[30;43m \w\$(parsegitbranch) \$(gitbehind)\e[0;32m\n└─▶ "
-export PS2="\n\e[0;32m\[\u@\h]\$\n\w \e[m"
+export PS1="\n\[\033[30;42m\] \u \[\033[30;43m\] \w\$(parsegitbranch) \$(gitbehind)\[\033[0;37m\] : \D{%T}\n\[\033[0;32m\]└─▶ "
+export PS2="\n\[\033[0;32m\]\[\u@\h]\$\n\w \[\033[m\]"
 # Use debug to reset color back to white before output display
 trap 'echo -n "$(tput sgr0)"' DEBUG
 
